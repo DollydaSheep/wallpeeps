@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/curated',async (req,res)=>{
+router.get('/curated',async (req,res)=>{
     var query = req.query.search;
     console.log(query);
     const response = await fetch(`https://api.pexels.com/v1/search?query=${query}`,{
