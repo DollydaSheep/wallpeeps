@@ -57,9 +57,9 @@ submit.addEventListener("click",async ()=>{
             console.log(photo.width + photo.height);
             images[index] = photo;
             if(photo.width < photo.height){
-                photospace.insertAdjacentHTML('afterbegin',`<div class="tall gallery"><img src="${photo.src.original}" loading="lazy"></img><div onclick="downloadImage('${photo.src.original}')">download</a></div></div>`);
+                photospace.insertAdjacentHTML('afterbegin',`<div class="tall gallery"><img src="${photo.src.medium}" loading="lazy"></img><div onclick="downloadImage('${photo.src.original}')">download</a></div></div>`);
             }else{
-                photospace.insertAdjacentHTML('afterbegin',`<div class="gallery"><img src="${photo.src.original}" loading="lazy"></img><div onclick="downloadImage('${photo.src.original}')">download</a></div></div>`);
+                photospace.insertAdjacentHTML('afterbegin',`<div class="gallery"><img src="${photo.src.medium}" loading="lazy"></img><div onclick="downloadImage('${photo.src.original}')">download</a></div></div>`);
             }
         });
         imageSelect = document.querySelectorAll(".gallery");
