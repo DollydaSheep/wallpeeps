@@ -37,7 +37,7 @@ search.addEventListener('keypress',(e)=>{
 
 submit.addEventListener("click",async ()=>{
     try{
-        const response = await fetch(`https://nodejswallpeeps.netlify.app/curated?search=${search.value}`,{
+        const response = await fetch(`https://nodejswallpeeps.netlify.app/.netlify/functions/api/curated?search=${search.value}`,{
             method: 'GET',
             headers:{
                 "Content-Type" : "application/json"
