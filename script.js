@@ -12,6 +12,27 @@ const descAlt = document.querySelector('.desc-alt');
 let imageSelect;
 let images = {};
 
+let mediaQuery = window.matchMedia("(max-width: 768px)");
+let mediaChange = 0;
+
+let scrollTop;
+let scrollLeft;
+
+function mediaChangeFunction(){
+    if(mediaQuery.matches){
+        mediaChange = 1;
+        console.log("change")
+    }else{
+        mediaChange = 0;
+    }
+}
+
+mediaQuery.addEventListener("change",()=>{
+    mediaChangeFunction();
+})
+
+mediaChangeFunction();
+
 function downloadImage(url){
     fetch(url)
         .then(response => response.blob())
@@ -65,12 +86,21 @@ submit.addEventListener("click",async ()=>{
         imageSelect = document.querySelectorAll(".gallery");
         imageSelect.forEach((img,index) => {
             img.addEventListener("click",()=>{
-                mainPage.style.width = "calc(100% - 500px)"
+                mainPage.style.width = "calc(100% - 430px + 2em)";
                 viewSection.style.transform = "translateX(0%)";
                 console.log((Object.keys(images).length)-1-index);
                 viewImage.src = images[(Object.keys(images).length)-1-index].src.original;
                 squareColor.style.backgroundColor = images[(Object.keys(images).length)-1-index].avg_color;
                 descAlt.innerText = images[(Object.keys(images).length)-1-index].alt;
+                if(mediaChange == 1){
+                    mainPage.style.overflow = "hidden";
+                    mainPage.style.zIndex = "-99";
+                    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+                    window.onscroll = ()=>{
+                        window.scrollTo(scrollLeft,scrollTop);
+                    }
+                }
             })
         });
     }catch(err){
@@ -79,6 +109,12 @@ submit.addEventListener("click",async ()=>{
 })
 
 exitButton.addEventListener("click",()=>{
-    viewSection.style.transform = "translateX(120%)";
+    viewSection.style.transform = "translateX(200%)";
     mainPage.style.width = "100%";
+    if(mediaChange == 1){
+        mainPage.style.overflowY = "auto";
+        mainPage.style.zIndex = "0";
+    }
+    window.onscroll = ()=>{
+    }
 })
