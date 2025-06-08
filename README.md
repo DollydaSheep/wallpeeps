@@ -15,3 +15,8 @@
 - **Frontend**: HTML, CSS, JavaScript (Vanilla)
 - **Backend**: Node.js, Express
 - **API**: [Pexels API](https://www.pexels.com/api/)
+
+## 🧪 Preview
+
+![image](https://github.com/user-attachments/assets/85a7d037-1974-4755-92ae-76c8d70cf759)
+
